@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Profile Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .form-container {
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            max-width: 600px;
+            background-color: #2d2d2d;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #333;
+            color: #ffffff;
+        }
+        button {
+            background-color: #0077b5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005582;
+        }
+        .error {
+            color: #ff4444;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>LinkedIn Profile Analyzer</h1>
+    <div class="form-container">
+        <form action="/submit" method="POST">
+            <input type="text" name="url" placeholder="Enter LinkedIn Profile URL" required>
+            <button type="submit">Analyze Profile</button>
+        </form>
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        // Check for error in URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error) {
+            document.getElementById('error').textContent = error;
+        }
+    </script>
+</body>
+</html>
